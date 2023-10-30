@@ -1,6 +1,18 @@
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import Modal from "./Modal";
 import { AiOutlineSearch, AiOutlineInfoCircle } from "react-icons/ai";
 
 function Header() {
+  // MODAL STATE
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="flex justify-between items-center h-0">
       {/* TITLE */}
@@ -11,9 +23,11 @@ function Header() {
           <AiOutlineSearch />
         </span>
         <span className="icons">
-          <AiOutlineInfoCircle />
+          <AiOutlineInfoCircle onClick={openModal} />
         </span>
       </div>
+      {isModalOpen &&
+        createPortal(<Modal closeModal={closeModal} />, document.body)}
     </div>
   );
 }
