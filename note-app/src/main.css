@@ -36,4 +36,9 @@
     {
         @apply z-10 fixed top-0 left-0 w-full h-screen bg-[#ffffff33]
     }
+
+    .inputs
+    {
+        @apply bg-transparent outline-none border-none
+    }
 }

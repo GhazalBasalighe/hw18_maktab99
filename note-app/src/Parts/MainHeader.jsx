@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import Modal from "./Modal";
+import Modal from "../Components/Modal";
 import { AiOutlineSearch, AiOutlineInfoCircle } from "react-icons/ai";
 
-function Header() {
+function MainHeader() {
   // MODAL STATE
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
@@ -32,4 +32,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MainHeader;
