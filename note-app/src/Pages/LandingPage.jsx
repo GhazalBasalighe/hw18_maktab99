@@ -1,5 +1,5 @@
 import MainHeader from "../Parts/MainHeader";
-import Footer from "../Components/Footer";
+import Footer from "../Parts/Footer";
 
 function LandingPage({ handleRedirectAdd }) {
   return (

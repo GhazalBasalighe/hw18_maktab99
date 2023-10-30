@@ -1,16 +1,33 @@
 import { useState } from "react";
 import LandingPage from "./Pages/LandingPage";
 import AddNote from "./Pages/AddNote";
+import Notes from "./Pages/Notes";
 
 function App() {
-  // STATE FOR RENDERING PAGES
   const [pageToRender, setPageToRender] = useState("landing");
-  // STATE FOR ADDING NEW NOTES
   const [notes, setNotes] = useState([]);
   //ADDING NEW NOTES TO STATE
+  const bgColors = [
+    "bg-red-300",
+    "bg-blue-300",
+    "bg-green-300",
+    "bg-yellow-300",
+    "bg-sky-300",
+    "bg-pink-300",
+    "bg-orange-300",
+    "bg-lime-300",
+    "bg-emerald-300",
+    "bg-teal-300",
+    "bg-cyan-300",
+  ];
   function addNewNote(title, description) {
-    const newNote = { title, description };
-    setNotes(...notes, newNote);
+    const newNote = {
+      title,
+      description,
+      id: new Date(),
+      bgColor: bgColors[Math.floor(Math.random() * bgColors.length)],
+    };
+    setNotes([...notes, newNote]);
     console.log(notes);
   }
   // REDIRECT TO PAGES(WITHOUT ROUTER ☹️ )
@@ -35,7 +52,7 @@ function App() {
       />
     );
   } else if (pageToRender === "notes") {
-    //    return <Notes notes={notes} />
+    return <Notes notes={notes} handleRedirectAdd={handleRedirectAdd} />;
   }
 }
 export default App;
