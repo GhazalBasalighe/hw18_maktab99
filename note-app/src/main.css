@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base
+{
+    html
+    {
+        border-radius: 30px;
+        background: #252525;
+        color: white;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    #root
+    {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@layer components
+{
+    .icons
+    {
+        @apply bg-iconBg p-3 rounded-2xl
+    }
+}
