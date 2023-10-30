@@ -1,9 +1,12 @@
 import SecondaryHeader from "../Parts/SecondaryHeader";
 import Inputs from "../Components/Inputs";
-function AddNote({ handleBackToLanding }) {
+function AddNote({ handleRedirectLanding, handleRedirectNotes }) {
   return (
     <div>
-      <SecondaryHeader handleBackToLanding={handleBackToLanding} />
+      <SecondaryHeader
+        handleRedirectLanding={handleRedirectLanding}
+        handleRedirectNotes={handleRedirectNotes}
+      />
       <Inputs />
     </div>
   );

@@ -1,7 +1,7 @@
 import MainHeader from "../Parts/MainHeader";
 import Footer from "../Components/Footer";
 
-function LandingPage({ handleAddNote }) {
+function LandingPage({ handleRedirectAdd }) {
   return (
     <div className="h-screen grid">
       <MainHeader />
@@ -11,7 +11,7 @@ function LandingPage({ handleAddNote }) {
           Create your first note !
         </p>
       </div>
-      <Footer handleAddNote={handleAddNote} />
+      <Footer handleRedirectAdd={handleRedirectAdd} />
     </div>
   );
 }
