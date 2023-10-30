@@ -1,4 +1,11 @@
-function Inputs() {
+function Inputs({ setTitle, setDescription }) {
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
   return (
     <>
       <input
@@ -8,6 +15,7 @@ function Inputs() {
         placeholder="Title"
         size={20}
         required
+        onChange={handleTitleChange}
         className="inputs text-5xl my-10"
       />
       <textarea
@@ -16,6 +24,7 @@ function Inputs() {
         cols="18"
         rows="10"
         placeholder="Type Something..."
+        onChange={handleDescriptionChange}
         className="inputs text-2xl"
       ></textarea>
     </>
