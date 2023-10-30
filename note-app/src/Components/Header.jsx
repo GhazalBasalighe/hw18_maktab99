@@ -2,7 +2,7 @@ import { AiOutlineSearch, AiOutlineInfoCircle } from "react-icons/ai";
 
 function Header() {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center h-0">
       {/* TITLE */}
       <h1 className="text-4xl font-semibold">Notes</h1>
       {/* ICONS ON THE LEFT */}

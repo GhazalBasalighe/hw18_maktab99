@@ -1,12 +1,6 @@
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import AddPage from "./Components/Pages/AddPage";
+
 function App() {
-  return (
-    <>
-      <Header />
-      <img src="" alt="" />
-      <Footer />
-    </>
-  );
+  return <AddPage />;
 }
 export default App;
