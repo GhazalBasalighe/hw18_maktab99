@@ -2,10 +2,12 @@ import { useState } from "react";
 import LandingPage from "./Pages/LandingPage";
 import AddNote from "./Pages/AddNote";
 import Notes from "./Pages/Notes";
+import ReadNote from "./Pages/ReadNote";
 
 function App() {
   const [pageToRender, setPageToRender] = useState("landing");
   const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
   //ADDING NEW NOTES TO STATE
   const bgColors = [
     "bg-red-300",
@@ -40,6 +42,10 @@ function App() {
   function handleRedirectNotes() {
     setPageToRender("notes");
   }
+  function handleRedirectRead(note) {
+    setPageToRender("readNote");
+    setSelectedNote(note);
+  }
   // LANDING , ADD NOTE , ALL NOTES , READ NOTE, DELETE NOTE , SEARCH NOTE
   if (pageToRender === "landing") {
     return <LandingPage handleRedirectAdd={handleRedirectAdd} />;
@@ -49,10 +55,25 @@ function App() {
         handleRedirectLanding={handleRedirectLanding}
         handleRedirectNotes={handleRedirectNotes}
         addNewNote={addNewNote}
+        pageToRender={pageToRender}
       />
     );
   } else if (pageToRender === "notes") {
-    return <Notes notes={notes} handleRedirectAdd={handleRedirectAdd} />;
+    return (
+      <Notes
+        notes={notes}
+        handleRedirectAdd={handleRedirectAdd}
+        handleRedirectRead={handleRedirectRead}
+      />
+    );
+  } else if (pageToRender === "readNote") {
+    return (
+      <ReadNote
+        pageToRender={pageToRender}
+        selectedNote={selectedNote}
+        handleRedirectNotes={handleRedirectNotes}
+      />
+    );
   }
 }
 export default App;

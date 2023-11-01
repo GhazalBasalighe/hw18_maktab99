@@ -1,12 +1,13 @@
 import MainHeader from "../Parts/MainHeader";
 import Footer from "../Parts/Footer";
-function Notes({ notes, handleRedirectAdd }) {
+function Notes({ notes, handleRedirectAdd, handleRedirectRead }) {
   return (
     <div>
       <MainHeader />
       <div className="grid grid-cols-1 my-10 gap-4">
         {notes.map((note) => (
           <div
+            onClick={() => handleRedirectRead(note)}
             key={note.id}
             className={`cursor-pointer rounded-lg p-6 ${note.bgColor} text-black`}
           >

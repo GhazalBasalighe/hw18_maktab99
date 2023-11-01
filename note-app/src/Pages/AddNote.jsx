@@ -2,7 +2,12 @@ import SecondaryHeader from "../Parts/SecondaryHeader";
 import Inputs from "../Components/Inputs";
 import { useState } from "react";
 function AddNote(props) {
-  const { handleRedirectLanding, handleRedirectNotes, addNewNote } = props;
+  const {
+    handleRedirectLanding,
+    handleRedirectNotes,
+    addNewNote,
+    pageToRender,
+  } = props;
   // STATE FOR TITLE AND DESCRIPTION
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,6 +21,7 @@ function AddNote(props) {
         handleRedirectLanding={handleRedirectLanding}
         handleRedirectNotes={handleRedirectNotes}
         handleSaveNote={handleSaveNote}
+        pageToRender={pageToRender}
       />
       <Inputs setTitle={setTitle} setDescription={setDescription} />
     </div>

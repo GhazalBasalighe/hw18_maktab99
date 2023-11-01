@@ -1,10 +1,25 @@
-import { AiOutlineLeft, AiOutlineSave } from "react-icons/ai";
+import {
+  AiOutlineLeft,
+  AiOutlineSave,
+  AiOutlineDelete,
+} from "react-icons/ai";
 function SecondaryHeader(props) {
-  const { handleRedirectLanding, handleRedirectNotes, handleSaveNote } =
-    props;
+  const {
+    handleRedirectLanding,
+    handleRedirectNotes,
+    handleSaveNote,
+    pageToRender,
+  } = props;
   return (
     <div className="flex justify-between items-center">
-      <span className="icons" onClick={handleRedirectLanding}>
+      <span
+        className="icons"
+        onClick={
+          pageToRender === "addNote"
+            ? handleRedirectLanding
+            : handleRedirectNotes
+        }
+      >
         <AiOutlineLeft />
       </span>
       <span
@@ -14,7 +29,11 @@ function SecondaryHeader(props) {
           handleSaveNote();
         }}
       >
-        <AiOutlineSave />
+        {pageToRender === "addNote" ? (
+          <AiOutlineSave />
+        ) : (
+          <AiOutlineDelete />
+        )}
       </span>
     </div>
   );
