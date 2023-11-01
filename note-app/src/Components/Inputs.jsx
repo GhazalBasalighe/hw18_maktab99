@@ -13,7 +13,7 @@ function Inputs({ setTitle, setDescription }) {
         name="title"
         id="title"
         placeholder="Title"
-        size={20}
+        size={10}
         required
         onChange={handleTitleChange}
         className="inputs text-5xl my-10"

@@ -39,6 +39,6 @@
 
     .inputs
     {
-        @apply bg-transparent outline-none border-none
+        @apply bg-transparent outline-none border-none break-words
     }
 }

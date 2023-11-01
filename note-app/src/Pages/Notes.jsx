@@ -8,7 +8,7 @@ function Notes({ notes, handleRedirectAdd }) {
         {notes.map((note) => (
           <div
             key={note.id}
-            className={`rounded-lg p-6 ${note.bgColor} text-black`}
+            className={`cursor-pointer rounded-lg p-6 ${note.bgColor} text-black`}
           >
             <h3 className="break-words">{note.title}</h3>
           </div>
