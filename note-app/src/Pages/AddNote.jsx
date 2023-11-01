@@ -4,6 +4,7 @@ import Inputs from "../Components/Inputs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+
 function AddNote(props) {
   const {
     handleRedirectLanding,
@@ -15,6 +16,7 @@ function AddNote(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  //FUNCTION FOR SAVING AND VALIDATING NOTES
   function handleSaveNote() {
     if (title) {
       addNewNote(title, description);

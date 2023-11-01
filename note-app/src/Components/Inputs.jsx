@@ -1,4 +1,5 @@
 function Inputs({ setTitle, setDescription }) {
+  // DESCRIPTION AND TITLE STATE SETTERS
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };

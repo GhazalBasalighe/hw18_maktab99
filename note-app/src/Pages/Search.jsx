@@ -2,7 +2,7 @@ import { useRef, useCallback, useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import NoteGenerator from "../Parts/NoteGenerator";
 
-function Search({ notes, handleRedirectRead }) {
+function Search({ notes, handleRedirectRead, handleRedirectNotes }) {
   const [searchResults, setSearchResults] = useState([]);
   const userInput = useRef();
   const debounceDelay = 500; // Adjust the delay as needed
@@ -20,10 +20,7 @@ function Search({ notes, handleRedirectRead }) {
   useEffect(() => {
     console.log("Updated searchResults:", searchResults);
   }, [searchResults]);
-  //   CLEARING INPUT USING X
-  function clearUserInput() {
-    userInput.current.value = "";
-  }
+
   function searchNotes(inputValue) {
     const results = notes.filter((note) =>
       note.title.toLowerCase().includes(inputValue.toLowerCase())
@@ -42,7 +39,9 @@ function Search({ notes, handleRedirectRead }) {
         />
         <span
           className="absolute right-4 top-3 cursor-pointer"
-          onClick={clearUserInput}
+          onClick={handleRedirectNotes}
+          // NOTE: this button would simply had to clear e.target.value
+          //but since there was no btn to go back , I implemented this way :)
         >
           <AiOutlineClose />
         </span>

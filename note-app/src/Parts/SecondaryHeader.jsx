@@ -6,6 +6,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import Modal from "./Modal";
+
 function SecondaryHeader(props) {
   const {
     handleRedirectLanding,
@@ -17,6 +18,7 @@ function SecondaryHeader(props) {
   } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // MODAL STATE SETTERS
   const openModal = () => {
     setIsModalOpen(true);
   };
