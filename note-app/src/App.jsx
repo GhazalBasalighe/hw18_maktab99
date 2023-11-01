@@ -91,7 +91,7 @@ function App() {
       />
     );
   } else if (pageToRender === "search") {
-    return <Search />;
+    return <Search notes={notes} />;
   }
 }
 export default App;
