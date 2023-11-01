@@ -1,7 +1,8 @@
 import { useRef, useCallback, useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import NoteGenerator from "../Parts/NoteGenerator";
 
-function Search({ notes }) {
+function Search({ notes, handleRedirectRead }) {
   const [searchResults, setSearchResults] = useState([]);
   const userInput = useRef();
   const debounceDelay = 500; // Adjust the delay as needed
@@ -24,11 +25,10 @@ function Search({ notes }) {
     userInput.current.value = "";
   }
   function searchNotes(inputValue) {
-    setSearchResults(
-      notes.filter((note) =>
-        note.title.toLowerCase().includes(inputValue.toLowerCase())
-      )
+    const results = notes.filter((note) =>
+      note.title.toLowerCase().includes(inputValue.toLowerCase())
     );
+    setSearchResults(results);
   }
   return (
     <div className="h-screen grid">
@@ -47,12 +47,26 @@ function Search({ notes }) {
           <AiOutlineClose />
         </span>
       </div>
-      <div className="place-items-center">
-        <img src="src/assets/NotFound.png" alt="add your first note" />
-        <p className="text-xl font-light text-center">
-          File not found. Try searching again.
-        </p>
-      </div>
+      {/* IF THERE ARE NOTES */}
+      {searchResults.length !== 0 && (
+        <div className=" place-items-start h-screen">
+          <NoteGenerator
+            notes={searchResults}
+            handleRedirectRead={handleRedirectRead}
+          />
+        </div>
+      )}
+      {/* IF THERE ARE NO NOTES */}
+      {searchResults.length === 0 && (
+        <div className="h-screen grid place-items-center">
+          <div>
+            <img src="src/assets/NotFound.png" alt="add your first note" />
+            <p className="text-xl font-light text-center">
+              File not found. Try searching again.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

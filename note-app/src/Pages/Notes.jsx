@@ -1,5 +1,6 @@
 import MainHeader from "../Components/MainHeader";
 import Footer from "../Parts/Footer";
+import NoteGenerator from "../Parts/NoteGenerator";
 function Notes({
   notes,
   handleRedirectAdd,
@@ -10,17 +11,10 @@ function Notes({
     <div>
       <MainHeader handleRedirectSearch={handleRedirectSearch} />
       {/* IF THERE ARE NOTES */}
-      <div className="grid grid-cols-1 my-10 gap-4">
-        {notes.map((note) => (
-          <div
-            onClick={() => handleRedirectRead(note)}
-            key={note.id}
-            className={`cursor-pointer rounded-lg p-6 ${note.bgColor} text-black`}
-          >
-            <h3 className="break-words">{note.title}</h3>
-          </div>
-        ))}
-      </div>
+      <NoteGenerator
+        notes={notes}
+        handleRedirectRead={handleRedirectRead}
+      />
       {/* IF THERE ARE NO NOTES */}
       {notes.length === 0 && (
         <div className="h-screen grid place-items-center">

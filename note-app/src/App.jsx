@@ -91,7 +91,9 @@ function App() {
       />
     );
   } else if (pageToRender === "search") {
-    return <Search notes={notes} />;
+    return (
+      <Search notes={notes} handleRedirectRead={handleRedirectRead} />
+    );
   }
 }
 export default App;
