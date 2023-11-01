@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import Modal from "../Components/Modal";
+import Modal from "../Parts/Modal";
 import { AiOutlineSearch, AiOutlineInfoCircle } from "react-icons/ai";
 
-function MainHeader() {
+function MainHeader({ pageToRender }) {
   // MODAL STATE
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
@@ -27,7 +27,10 @@ function MainHeader() {
         </span>
       </div>
       {isModalOpen &&
-        createPortal(<Modal closeModal={closeModal} />, document.body)}
+        createPortal(
+          <Modal closeModal={closeModal} pageToRender={pageToRender} />,
+          document.body
+        )}
     </div>
   );
 }

@@ -32,6 +32,10 @@ function App() {
     setNotes([...notes, newNote]);
     console.log(notes);
   }
+  function deleteNote(id) {
+    setNotes(notes.filter((note) => note.id !== id));
+    handleRedirectNotes();
+  }
   // REDIRECT TO PAGES(WITHOUT ROUTER ☹️ )
   function handleRedirectAdd() {
     setPageToRender("addNote");
@@ -48,7 +52,12 @@ function App() {
   }
   // LANDING , ADD NOTE , ALL NOTES , READ NOTE, DELETE NOTE , SEARCH NOTE
   if (pageToRender === "landing") {
-    return <LandingPage handleRedirectAdd={handleRedirectAdd} />;
+    return (
+      <LandingPage
+        handleRedirectAdd={handleRedirectAdd}
+        pageToRender={pageToRender}
+      />
+    );
   } else if (pageToRender === "addNote") {
     return (
       <AddNote
@@ -72,6 +81,7 @@ function App() {
         pageToRender={pageToRender}
         selectedNote={selectedNote}
         handleRedirectNotes={handleRedirectNotes}
+        deleteNote={deleteNote}
       />
     );
   }

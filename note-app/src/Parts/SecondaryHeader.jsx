@@ -1,15 +1,29 @@
+import { useState } from "react";
+import { createPortal } from "react-dom";
 import {
   AiOutlineLeft,
   AiOutlineSave,
   AiOutlineDelete,
 } from "react-icons/ai";
+import Modal from "./Modal";
 function SecondaryHeader(props) {
   const {
     handleRedirectLanding,
     handleRedirectNotes,
     handleSaveNote,
     pageToRender,
+    deleteNote,
+    selectedNote,
   } = props;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="flex justify-between items-center">
       <span
@@ -22,19 +36,33 @@ function SecondaryHeader(props) {
       >
         <AiOutlineLeft />
       </span>
-      <span
-        className="icons"
-        onClick={() => {
-          handleRedirectNotes();
-          handleSaveNote();
-        }}
-      >
-        {pageToRender === "addNote" ? (
+      {pageToRender === "addNote" ? (
+        //SAVE ICON
+        <span
+          className="icons"
+          onClick={() => {
+            handleRedirectNotes();
+            handleSaveNote();
+          }}
+        >
           <AiOutlineSave />
-        ) : (
+        </span>
+      ) : (
+        //DELETE ICON
+        <span className="icons" onClick={openModal}>
           <AiOutlineDelete />
+        </span>
+      )}
+      {isModalOpen &&
+        createPortal(
+          <Modal
+            closeModal={closeModal}
+            pageToRender={pageToRender}
+            deleteNote={deleteNote}
+            selectedNote={selectedNote}
+          />,
+          document.body
         )}
-      </span>
     </div>
   );
 }

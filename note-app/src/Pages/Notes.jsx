@@ -1,4 +1,4 @@
-import MainHeader from "../Parts/MainHeader";
+import MainHeader from "../Components/MainHeader";
 import Footer from "../Parts/Footer";
 function Notes({ notes, handleRedirectAdd, handleRedirectRead }) {
   return (

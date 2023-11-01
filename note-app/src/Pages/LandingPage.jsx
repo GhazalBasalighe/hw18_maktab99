@@ -1,10 +1,10 @@
-import MainHeader from "../Parts/MainHeader";
+import MainHeader from "../Components/MainHeader";
 import Footer from "../Parts/Footer";
 
-function LandingPage({ handleRedirectAdd }) {
+function LandingPage({ handleRedirectAdd, pageToRender }) {
   return (
     <div className="h-screen grid">
-      <MainHeader />
+      <MainHeader pageToRender={pageToRender} />
       <div className="place-items-center">
         <img src="src/assets/FirstNote.png" alt="add your first note" />
         <p className="text-xl font-light text-center">
