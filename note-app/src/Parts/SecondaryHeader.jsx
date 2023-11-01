@@ -38,13 +38,7 @@ function SecondaryHeader(props) {
       </span>
       {pageToRender === "addNote" ? (
         //SAVE ICON
-        <span
-          className="icons"
-          onClick={() => {
-            handleRedirectNotes();
-            handleSaveNote();
-          }}
-        >
+        <span className="icons" onClick={handleSaveNote}>
           <AiOutlineSave />
         </span>
       ) : (

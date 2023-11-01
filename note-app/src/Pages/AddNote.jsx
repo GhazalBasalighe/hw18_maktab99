@@ -1,5 +1,8 @@
 import SecondaryHeader from "../Parts/SecondaryHeader";
 import Inputs from "../Components/Inputs";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 function AddNote(props) {
   const {
@@ -13,17 +16,23 @@ function AddNote(props) {
   const [description, setDescription] = useState("");
 
   function handleSaveNote() {
-    if (title) addNewNote(title, description);
+    if (title) {
+      addNewNote(title, description);
+      handleRedirectNotes();
+    } else {
+      toast("Please Enter Title");
+    }
   }
   return (
     <div>
       <SecondaryHeader
         handleRedirectLanding={handleRedirectLanding}
-        handleRedirectNotes={handleRedirectNotes}
         handleSaveNote={handleSaveNote}
+        handleRedirectNotes={handleRedirectNotes}
         pageToRender={pageToRender}
       />
       <Inputs setTitle={setTitle} setDescription={setDescription} />
+      {!title && <ToastContainer />}
     </div>
   );
 }
