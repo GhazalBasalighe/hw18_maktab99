@@ -3,26 +3,27 @@ import LandingPage from "./Pages/LandingPage";
 import AddNote from "./Pages/AddNote";
 import Notes from "./Pages/Notes";
 import ReadNote from "./Pages/ReadNote";
+import Search from "./Pages/Search";
 
 function App() {
   const [pageToRender, setPageToRender] = useState("landing");
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   //ADDING NEW NOTES TO STATE
-  const bgColors = [
-    "bg-red-300",
-    "bg-blue-300",
-    "bg-green-300",
-    "bg-yellow-300",
-    "bg-sky-300",
-    "bg-pink-300",
-    "bg-orange-300",
-    "bg-lime-300",
-    "bg-emerald-300",
-    "bg-teal-300",
-    "bg-cyan-300",
-  ];
   function addNewNote(title, description) {
+    const bgColors = [
+      "bg-red-300",
+      "bg-blue-300",
+      "bg-green-300",
+      "bg-yellow-300",
+      "bg-sky-300",
+      "bg-pink-300",
+      "bg-orange-300",
+      "bg-lime-300",
+      "bg-emerald-300",
+      "bg-teal-300",
+      "bg-cyan-300",
+    ];
     const newNote = {
       title,
       description,
@@ -30,8 +31,8 @@ function App() {
       bgColor: bgColors[Math.floor(Math.random() * bgColors.length)],
     };
     setNotes([...notes, newNote]);
-    console.log(notes);
   }
+  //DELETING SELECTED NOTE FROM STATE
   function deleteNote(id) {
     setNotes(notes.filter((note) => note.id !== id));
     handleRedirectNotes();
@@ -50,11 +51,15 @@ function App() {
     setPageToRender("readNote");
     setSelectedNote(note);
   }
-  // LANDING , ADD NOTE , ALL NOTES , READ NOTE, DELETE NOTE , SEARCH NOTE
+  function handleRedirectSearch() {
+    setPageToRender("search");
+  }
+  // possible pages currently : landing, addNote, notes, readNote, search
   if (pageToRender === "landing") {
     return (
       <LandingPage
         handleRedirectAdd={handleRedirectAdd}
+        handleRedirectSearch={handleRedirectSearch}
         pageToRender={pageToRender}
       />
     );
@@ -73,6 +78,7 @@ function App() {
         notes={notes}
         handleRedirectAdd={handleRedirectAdd}
         handleRedirectRead={handleRedirectRead}
+        handleRedirectSearch={handleRedirectSearch}
       />
     );
   } else if (pageToRender === "readNote") {
@@ -84,6 +90,8 @@ function App() {
         deleteNote={deleteNote}
       />
     );
+  } else if (pageToRender === "search") {
+    return <Search />;
   }
 }
 export default App;

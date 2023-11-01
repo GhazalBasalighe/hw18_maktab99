@@ -1,9 +1,14 @@
 import MainHeader from "../Components/MainHeader";
 import Footer from "../Parts/Footer";
-function Notes({ notes, handleRedirectAdd, handleRedirectRead }) {
+function Notes({
+  notes,
+  handleRedirectAdd,
+  handleRedirectRead,
+  handleRedirectSearch,
+}) {
   return (
     <div>
-      <MainHeader />
+      <MainHeader handleRedirectSearch={handleRedirectSearch} />
       {/* IF THERE ARE NOTES */}
       <div className="grid grid-cols-1 my-10 gap-4">
         {notes.map((note) => (
