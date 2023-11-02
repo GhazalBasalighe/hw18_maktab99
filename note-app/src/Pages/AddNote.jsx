@@ -1,9 +1,8 @@
 import SecondaryHeader from "../Parts/SecondaryHeader";
 import Inputs from "../Components/Inputs";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import { createPortal } from "react-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 function AddNote(props) {
   const {
@@ -22,11 +21,18 @@ function AddNote(props) {
       addNewNote(title, description);
       handleRedirectNotes();
     } else {
-      toast("Please Enter Title");
+      toast.error("Please Enter Title", {
+        style: {
+          borderRadius: "1rem",
+          background: "#3B3B3B",
+          color: "#fff",
+          padding: "1rem",
+        },
+      });
     }
   }
   return (
-    <div>
+    <div className="toast relative">
       <SecondaryHeader
         handleRedirectLanding={handleRedirectLanding}
         handleSaveNote={handleSaveNote}
@@ -34,7 +40,20 @@ function AddNote(props) {
         pageToRender={pageToRender}
       />
       <Inputs setTitle={setTitle} setDescription={setDescription} />
-      {!title && <ToastContainer />}
+      {
+        (!title,
+        createPortal(
+          <Toaster
+            position="top-center"
+            containerStyle={{
+              position: "absolute",
+              top: "6rem",
+            }}
+            reverseOrder={false}
+          />,
+          document.body
+        ))
+      }
     </div>
   );
 }
