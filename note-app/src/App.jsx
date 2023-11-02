@@ -19,7 +19,7 @@ function App() {
       : [];
     setNotes(storedNotes);
   }, []);
-  //
+  //KEEP PAGE TO RENDER STATE AFTER REFRESH
   function pageToRenderFromLocal(newPage) {
     setPageToRender(newPage);
     localStorage.setItem("pageToRender", newPage);

@@ -6,6 +6,7 @@ function Search({ notes, handleRedirectRead, handleRedirectNotes }) {
   const [searchResults, setSearchResults] = useState([]);
   const userInput = useRef();
   const debounceDelay = 500; // Adjust the delay as needed
+
   //   DEBOUNCED USER INPUT SETTING
   const handleUserInput = useCallback(
     (e) => {
@@ -17,10 +18,8 @@ function Search({ notes, handleRedirectRead, handleRedirectNotes }) {
     },
     [debounceDelay]
   );
-  useEffect(() => {
-    console.log("Updated searchResults:", searchResults);
-  }, [searchResults]);
 
+  // SEARCH NOTES BY TITLE ONLY
   function searchNotes(inputValue) {
     const results = notes.filter((note) =>
       note.title.toLowerCase().includes(inputValue.toLowerCase())

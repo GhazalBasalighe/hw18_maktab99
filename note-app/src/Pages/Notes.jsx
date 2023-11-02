@@ -1,12 +1,13 @@
 import MainHeader from "../Components/MainHeader";
 import Footer from "../Parts/Footer";
 import NoteGenerator from "../Parts/NoteGenerator";
-function Notes({
-  notes,
-  handleRedirectAdd,
-  handleRedirectRead,
-  handleRedirectSearch,
-}) {
+function Notes(props) {
+  const {
+    notes,
+    handleRedirectAdd,
+    handleRedirectRead,
+    handleRedirectSearch,
+  } = props;
   return (
     <div>
       <MainHeader handleRedirectSearch={handleRedirectSearch} />

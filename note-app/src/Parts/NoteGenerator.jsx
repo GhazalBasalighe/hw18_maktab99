@@ -5,9 +5,10 @@ function NoteGenerator({ notes, handleRedirectRead }) {
         <div
           onClick={() => handleRedirectRead(note)}
           key={note.id}
-          className={`cursor-pointer rounded-lg p-6 ${note.bgColor} text-black`}
+          className={`cursor-pointer rounded-lg p-6 ${note.bgColor} text-black flex flex-col gap-2`}
         >
-          <h3 className="break-words">{note.title}</h3>
+          <h3 className="text-lg font-bold">{note.title}</h3>
+          <p className="text-xs">{note.description}</p>
         </div>
       ))}
     </div>

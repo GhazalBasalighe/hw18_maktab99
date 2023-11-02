@@ -1,10 +1,7 @@
 import SecondaryHeader from "../Parts/SecondaryHeader";
-function ReadNote({
-  pageToRender,
-  selectedNote,
-  handleRedirectNotes,
-  deleteNote,
-}) {
+function ReadNote(props) {
+  const { pageToRender, selectedNote, handleRedirectNotes, deleteNote } =
+    props;
   return (
     <div>
       <SecondaryHeader
