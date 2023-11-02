@@ -8,15 +8,22 @@
 {
     html
     {
-        border-radius: 30px;
-        background: #252525;
         color: white;
         font-family: 'Nunito', 'Vazirmatn';
+        padding: 3rem 0;
+        background-color: blanchedalmond
     }
 
     #root
     {
         padding: 3rem 1.5rem;
+        position: relative;
+        height: 100vh;
+        border-radius: 30px;
+        max-width: 500px;
+        max-height: 900px;
+        background: #252525;
+        margin: 0 auto;
     }
 }
 

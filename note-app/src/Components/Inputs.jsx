@@ -26,7 +26,7 @@ function Inputs({ setTitle, setDescription }) {
         rows="10"
         placeholder="Type Something..."
         onChange={handleDescriptionChange}
-        className="inputs text-2xl"
+        className="inputs text-2xl resize-none"
       ></textarea>
     </>
   );

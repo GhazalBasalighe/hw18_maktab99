@@ -12,11 +12,13 @@ function LandingPage({
         pageToRender={pageToRender}
         handleRedirectSearch={handleRedirectSearch}
       />
-      <div className="place-items-center">
-        <img src="src/assets/FirstNote.png" alt="add your first note" />
-        <p className="text-xl font-light text-center">
-          Create your first note !
-        </p>
+      <div className="h-screen grid place-items-center justify-center">
+        <div>
+          <img src="src/assets/FirstNote.png" alt="add your first note" />
+          <p className="text-xl font-light text-center">
+            Create your first note !
+          </p>
+        </div>
       </div>
       <Footer handleRedirectAdd={handleRedirectAdd} />
     </div>
