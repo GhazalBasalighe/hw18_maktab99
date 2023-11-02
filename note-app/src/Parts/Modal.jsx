@@ -10,10 +10,10 @@ function Modal({ closeModal, pageToRender, deleteNote, selectedNote }) {
           <span className="text-3xl">
             <PiWarningCircleDuotone />
           </span>
-          <span className="text-xl text-center">
+          <span className="text-lg text-center">
             Are you sure you want to delete?
           </span>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full sm:w-3/4">
             <button
               className="modal-btn bg-red-600"
               onClick={() => deleteNote(selectedNote.id)}
@@ -37,7 +37,7 @@ function Modal({ closeModal, pageToRender, deleteNote, selectedNote }) {
       <div className="modal-overlay">
         <div className="modal">
           <span>
-            Designed by <span className="font-bold">Pourya Asrzad</span>
+            Designed by <span className="font-bold">Divya Kelaskar</span>
           </span>
           <span>app version 1.0.0</span>
           <span>
