@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LandingPage from "./Pages/LandingPage";
 import AddNote from "./Pages/AddNote";
 import Notes from "./Pages/Notes";
@@ -6,9 +6,25 @@ import ReadNote from "./Pages/ReadNote";
 import Search from "./Pages/Search";
 
 function App() {
-  const [pageToRender, setPageToRender] = useState("landing");
+  const [pageToRender, setPageToRender] = useState(
+    localStorage.getItem("pageToRender") || "landing"
+  );
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+
+  // NOTES INITIALIZATION WHEN THE COMPONENT MOUNTS
+  useEffect(() => {
+    const storedNotes = localStorage.getItem("notes")
+      ? JSON.parse(localStorage.getItem("notes"))
+      : [];
+    setNotes(storedNotes);
+  }, []);
+  //
+  function pageToRenderFromLocal(newPage) {
+    setPageToRender(newPage);
+    localStorage.setItem("pageToRender", newPage);
+  }
+
   //ADDING NEW NOTES TO STATE
   function addNewNote(title, description) {
     const bgColors = [
@@ -30,28 +46,37 @@ function App() {
       id: new Date(),
       bgColor: bgColors[Math.floor(Math.random() * bgColors.length)],
     };
-    setNotes([...notes, newNote]);
+    const updatedNotes = [...notes, newNote];
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
   }
   //DELETING SELECTED NOTE FROM STATE
   function deleteNote(id) {
-    setNotes(notes.filter((note) => note.id !== id));
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
     handleRedirectNotes();
   }
   // REDIRECT TO PAGES(WITHOUT ROUTER ☹️ )
   function handleRedirectAdd() {
+    pageToRenderFromLocal("addNote");
     setPageToRender("addNote");
   }
   function handleRedirectLanding() {
+    pageToRenderFromLocal("landing");
     setPageToRender("landing");
   }
   function handleRedirectNotes() {
+    pageToRenderFromLocal("notes");
     setPageToRender("notes");
   }
   function handleRedirectRead(note) {
+    pageToRenderFromLocal("readNote");
     setPageToRender("readNote");
     setSelectedNote(note);
   }
   function handleRedirectSearch() {
+    pageToRenderFromLocal("search");
     setPageToRender("search");
   }
   // possible pages currently : landing, addNote, notes, readNote, search
