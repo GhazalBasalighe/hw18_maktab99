@@ -25,6 +25,7 @@
         background: #252525;
         margin: 0 auto;
     }
+
 }
 
 @layer components
@@ -36,7 +37,9 @@
 
     .modal
     {
-        @apply z-30 p-5 bg-blackBg rounded-3xl shadow-2xl text-white flex flex-col justify-center items-center gap-3 fixed top-1/2 left-5 right-5 h-[236px]
+        @apply z-30 p-5 bg-blackBg rounded-3xl shadow-2xl text-white flex flex-col justify-center items-center gap-3 absolute top-1/2 h-[236px] w-4/5 sm:w-1/2 md:w-[400px];
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .modal-overlay
